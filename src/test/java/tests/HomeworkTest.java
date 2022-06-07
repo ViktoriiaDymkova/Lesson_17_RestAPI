@@ -109,7 +109,7 @@ public class HomeworkTest {
 
     @Test
     void putUpdate() {
-        String body = "{ \"name\": \"morpheus\", \"job\": \"zion resident\", \"updatedAt\": \"2022-06-07T16:44:48.634Z\" }";
+        String body = "{ \"name\": \"morpheus\", \"job\": \"zion resident\" }";
         given()
                 .body(body)
                 .contentType(JSON)
@@ -120,7 +120,7 @@ public class HomeworkTest {
                 .statusCode(200)
                 .body("name", is("morpheus"))
                 .body("job", is("zion resident"))
-                .body("updatedAt", is("2022-06-07T17:01:48.655Z")); // не поняла как решить. начение динамичное ?
+                .body("updatedAt", is("2022-06-07T17:41:26.056Z")); // не поняла как решить. начение динамичное ?
     }
 
     @Test

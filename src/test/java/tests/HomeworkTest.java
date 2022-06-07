@@ -6,6 +6,7 @@ import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class HomeworkTest {
 
@@ -152,5 +153,21 @@ public class HomeworkTest {
                 .log().all()
                 .statusCode(400)
                 .body("error", is("Missing password"));
+    }
+
+    @Test
+    void postLOGINSUCCESSFUL() {
+        String body = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }";
+
+                given()
+                .body(body)
+                .contentType(JSON)
+                .when()
+                .post("https://reqres.in/api/login")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("token", notNullValue());
+
     }
 }

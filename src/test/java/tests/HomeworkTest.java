@@ -121,7 +121,9 @@ public class HomeworkTest {
                 .statusCode(200)
                 .body("name", is("morpheus"))
                 .body("job", is("zion resident"))
-                .body("updatedAt", is("2022-06-07T17:41:26.056Z")); // не поняла как решить. начение динамичное ?
+                .body("updatedAt", notNullValue()); //  тут динамичное время, проверить
+        // его не можем тк время отправки запроса и ответ с сервера различаются.
+        // Но мы можем проверить, что ответ есть !
     }
 
     @Test

@@ -33,6 +33,7 @@ public class TestBase {
         String login = remoteWebDriver.login();
         String password = remoteWebDriver.password();
 
+
         Configuration.remote = "https://" + login + ":" + password + "@" + remote;
         Configuration.browser = browser;
         Configuration.browserSize = browserSize;

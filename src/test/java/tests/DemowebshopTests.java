@@ -9,7 +9,7 @@ import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
-import owner.DataWebshop;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.CustomApiListener.withCustomTemplates;
@@ -18,15 +18,9 @@ import static io.restassured.RestAssured.given;
 
 
 public class DemowebshopTests extends TestBase {
-    //уберем эти данные в owner
-    //static String login = "qaguru@qa.guru",
-    //password = "qaguru@qa.guru1",
-
-    DataWebshop datawebshop = ConfigFactory.create(DataWebshop.class);
-    String login = datawebshop.login();
-    String password = datawebshop.password();
-    static String authCookieName = "NOPCOMMERCE.AUTH";
-
+    static String login = "qaguru@qa.guru",
+            password = "qaguru@qa.guru1",
+            authCookieName = "NOPCOMMERCE.AUTH";
 
     @Test
     @Tag("demowebshop")

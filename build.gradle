@@ -37,5 +37,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
-    useJUnitPlatform()
+    useJUnitPlatform {
+                includeTags "demowebshop"
+            }
 }

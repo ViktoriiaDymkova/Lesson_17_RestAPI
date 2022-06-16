@@ -161,7 +161,7 @@ public class HomeworkTest {
     void postLOGINSUCCESSFUL() {
         String body = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }";
 
-                given()
+        given()
                 .body(body)
                 .contentType(JSON)
                 .when()

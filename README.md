@@ -1,7 +1,8 @@
 ## Lesson_17_RestAPI
 
-В ветке main разработано 5 простых автотестов на запросы из https://reqres.in/
-Теорию для понимания разницы в запросах я брала тут https://mcs.mail.ru/blog/vvedenie-v-rest-api 
+В ветке main разработано 5 простых автотестов на запросы на сайте https://reqres.in/
+
+Теорию для понимания разницы в запросах я брала [тут](https://mcs.mail.ru/blog/vvedenie-v-rest-api).
 
 ## Lesson_18_RestAPI
 

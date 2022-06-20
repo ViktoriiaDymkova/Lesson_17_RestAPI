@@ -1,6 +1,11 @@
 package tests;
 
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
@@ -171,5 +176,31 @@ public class HomeworkTest {
                 .statusCode(200)
                 .body("token", notNullValue());
 
+    }
+
+    //ниже тест на проверку время/дата в ответе сервера не старше текущего время/дата (сравнение времени в Java)
+    @Test
+    void putUpdateExactTime() throws ParseException {
+        String body = "{ \"name\": \"morpheus\", \"job\": \"zion resident\" }";
+
+        Response response = given()
+                .body(body)
+                .contentType(JSON)
+                .when()
+                .put("https://reqres.in/api/users/2")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("name", is("morpheus"))
+                .body("job", is("zion resident"))
+                .body("updatedAt", notNullValue())
+                .extract()
+                .response();
+
+        String dateTimeFromApi = (String) response.body().path("updatedAt");   //Переводим ответ апи в строку.
+        Date dateFromApi = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
+                .parse(dateTimeFromApi.replaceAll("Z$", "+0000")); // форматируем строку в дату время. Для этого надо объяснить яве в каком формате наша дата - паттерн.
+
+        assert dateFromApi.before(new Date()); // Проверяем, что дата в ответе старше чем текущая. new Date() возвращает текущую.
     }
 }
